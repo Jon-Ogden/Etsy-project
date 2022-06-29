@@ -1,2 +1,48 @@
 class Api::ProductsController < ApplicationController
+    before_action :set_seller, except: [:all_products]
+    before_action :set_product, only: [:show, :destroy, :update]
+    
+    def all_products
+        render json: Product.all
+    end
+    
+    def index
+        render json: @seller.products
+    end
+    
+    def show
+        render json: @product
+    end
+    
+    def create
+        @product = @seller.products.new(product_params)
+        if(@product.save)
+            render json: @product
+        else
+            render json @product.errors.full_messages, status:422
+        end
+    end
+    
+    def update
+        if(@product.update(product_params))
+            render json: @product
+        else
+            render json: @product.errors.full_messages, status: 422
+        end
+    end
+    
+    def destroy
+        render json: @product.destroy
+    end
+    
+    private
+    def set_seller
+        @seller = Seller.find(params[:seller_id])
+    end
+    def set_product
+        @product = @seller.products.find(params[:id])
+    end
+    def product_params
+        params.require(:product).permit(:price, :description, :category, :seller_id)
+    end
 end
