@@ -28,12 +28,7 @@ const rotate = keyframes`
 export const Card = styled.div`
   min-width: 200px;
   max-width: 500px;
-  height: 300px;
+  height: fit-content;
   border: 1px solid ${COLORS.BLACK};
-  background: green;
-
-  @media ${devices.tablet} {
-    background: red;
-    animation: ${rotate} 2s linear;
-  }
+  background: orange;
 `;

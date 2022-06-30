@@ -8,22 +8,30 @@ import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UserAccount from './components/shared/UserAccount';
 import FetchUser from './components/auth/FetchUser';
+import Sellers from "./components/shared/Sellers";
+import Buyers from "./components/shared/Buyers";
+import Products from "./components/shared/Products";
+import EditSeller from "./components/shared/EditSeller";
 
 const App = () => (
   <>
     <Navbar />
     <>
-    <FetchUser>
+    {/* <FetchUser> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/sellers" element={<Sellers />} />
+        <Route path="/buyers" element={<Buyers />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/editSeller/:id" element={<EditSeller />} />
         <Route  element={<ProtectedRoute/>}>
             <Route path="/account" element={<UserAccount />} />
         </Route>
         <Route path="/*" element={<NoMatch />} />
       </Routes>
-    </FetchUser>
+    {/* </FetchUser> */}
     </>
   </>
 )

@@ -1,5 +1,6 @@
 class Api::SellersController < ApplicationController
-    before_action :set_seller only: [:show, :update, :destroy]
+    before_action :set_seller, only: [:show, :update, :destroy]
+
     def index
         render json: Seller.all
     end
@@ -35,5 +36,5 @@ class Api::SellersController < ApplicationController
     end
     def seller_params
         return params.require(:seller).permit(:name, :email)
-
+    end
 end

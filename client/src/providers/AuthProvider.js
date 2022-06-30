@@ -1,12 +1,49 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = React.createContext();
 
 const AuthProvider = ({children})=> {
+    const [sellers, setSellers] = useState([])
+    const [buyers, setBuyers] = useState([])
+    const [products, setProducts] = useState([])
     const [user, setUser] = useState(null)
     const navigate = useNavigate();
+
+    const getSellers = async() => {
+        try{
+            let res = await axios.get('/api/sellers')
+            setSellers(res.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const getBuyers = async() => {
+        try{
+            let res = await axios.get('/api/buyers')
+            setBuyers(res.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const getProducts = async() => {
+        try{
+            let res = await axios.get('/api/products')
+            setProducts(res.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
+    useEffect(()=> {
+        getSellers()
+        getBuyers()
+        getProducts()
+    },[])
 
     const logout = async() => {
         try{
@@ -42,8 +79,21 @@ const AuthProvider = ({children})=> {
         }
     }
 
+    const updateSeller = async(newInfo) => {
+        let newSellers = sellers.map(c => c.id == newInfo.id ? newInfo : c)
+        setSellers(newSellers)
+        axios.put(`/api/sellers/${newInfo.id}`, newInfo)
+    }
+
+    const newSeller = async (newInfo) => {
+        let newSellers = [...sellers, newInfo]
+        setSellers(newSellers)
+        axios.post(`/api/sellers/`, newInfo)
+    }
+
     return (
-        <AuthContext.Provider value={{user, setUser, logout, login, register}}>
+        <AuthContext.Provider value={{user, setUser, logout, login, register, sellers, buyers, products,
+        updateSeller, newSeller, getSellers}}>
             {children}
         </AuthContext.Provider>
     )
