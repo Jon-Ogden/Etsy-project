@@ -18,10 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_215336) do
     t.string "name"
     t.float "max_price"
     t.string "desired_categories"
-    t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_buyers_on_seller_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -71,6 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_215336) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "buyers", "sellers"
   add_foreign_key "products", "sellers"
 end

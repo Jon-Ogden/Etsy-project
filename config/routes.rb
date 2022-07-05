@@ -10,5 +10,6 @@ Rails.application.routes.draw do
       resources :products
     end
     get '/products', to:'products#all_products'
+    get '/products/:category', to:'products#by_category'
   end
 end

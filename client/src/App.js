@@ -12,6 +12,8 @@ import Sellers from "./components/shared/Sellers";
 import Buyers from "./components/shared/Buyers";
 import Products from "./components/shared/Products";
 import EditSeller from "./components/shared/EditSeller";
+import SellerProducts from "./components/shared/SellerProducts";
+import EditProduct from "./components/shared/EditProduct";
 
 const App = () => (
   <>
@@ -26,6 +28,8 @@ const App = () => (
         <Route path="/buyers" element={<Buyers />} />
         <Route path="/products" element={<Products />} />
         <Route path="/editSeller/:id" element={<EditSeller />} />
+        <Route path="/editProduct/:id" element={<EditProduct />} />
+        <Route path="/sellerProducts/:id" element={<SellerProducts />} />
         <Route  element={<ProtectedRoute/>}>
             <Route path="/account" element={<UserAccount />} />
         </Route>

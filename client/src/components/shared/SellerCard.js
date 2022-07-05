@@ -10,8 +10,7 @@ export default function SellerCard(props){
         <Card>
             <Title type="t3">{props.name}</Title>
             <Text>{props.email}</Text>
-            <Button>See Products</Button>
-            <Button>See Buyers</Button>
+            <Button event={()=>{navigate(`/sellerProducts/${props.id}`)}} >See Products</Button>
             <Button event={()=>{navigate(`/editSeller/${props.id}`)}}>Edit</Button>
         </Card>
     )

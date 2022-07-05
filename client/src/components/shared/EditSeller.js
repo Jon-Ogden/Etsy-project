@@ -15,7 +15,6 @@ export default function EditSeller(){
     const [email, setEmail] = useState(seller ? seller.email : 'blank email')
 
     useEffect(()=>{
-        console.log('banana')
         if(sellers.length > 0){
             setName(seller.name)
             setEmail(seller.email)

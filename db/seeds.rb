@@ -20,27 +20,27 @@ s5 = Seller.create(email:'geemale@gmail.com', name:Faker::FunnyName.name)
 5.times do
     name = Faker::Name.name
     max_price = Faker::Number.decimal(l_digits: 2)
-    Buyers.create(name: name, max_price: max_price, desired_categories:'clothing, jewelry, art')
+    Buyer.create(name: name, max_price: max_price, desired_categories:'clothing, jewelry, art')
 end
 5.times do
     name = Faker::Name.name
     max_price = Faker::Number.decimal(l_digits: 2)
-    Buyers.create(name: name, max_price: max_price, desired_categories:'clothing, art, crafts')
+    Buyer.create(name: name, max_price: max_price, desired_categories:'clothing, art, crafts')
 end
 5.times do
     name = Faker::Name.name
     max_price = Faker::Number.decimal(l_digits: 2)
-    Buyers.create(name: name, max_price: max_price, desired_categories:'crafts, jewelry, decor')
+    Buyer.create(name: name, max_price: max_price, desired_categories:'crafts, jewelry, decor')
 end
 5.times do
     name = Faker::Name.name
     max_price = Faker::Number.decimal(l_digits: 2)
-    Buyers.create(name: name, max_price: max_price, desired_categories:'decor, crafts, knives')
+    Buyer.create(name: name, max_price: max_price, desired_categories:'decor, crafts, knives')
 end
 5.times do
     name = Faker::Name.name
     max_price = Faker::Number.decimal(l_digits: 2)
-    Buyers.create(name: name, max_price: max_price, desired_categories:'pillows, crafts, art')
+    Buyer.create(name: name, max_price: max_price, desired_categories:'pillows, crafts, art')
 end
 
 

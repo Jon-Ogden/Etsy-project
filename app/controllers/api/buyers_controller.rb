@@ -37,3 +37,4 @@ class Api::BuyersController < ApplicationController
     def buyer_params
         return params.require(:buyer).permit(:name, :max_price, :desired_categories)
     end
+end
